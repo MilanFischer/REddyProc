@@ -79,11 +79,10 @@ sEddyProc_sFillInit <- function(
   attr(lTEMP$VAR_fwin, 'units') <- 'days'
 
   ##details<<
-  ## Long gaps (larger than 60 days) are not filled.
-  #! Not congruent with PV-Wave, there the code is performed on single years
-  #only with long gaps of 60 days in the beginning or end skipped.
+  ## Long gaps (larger than 360 days) are not filled.
+  #only with long gaps of 360 days in the beginning or end skipped.
   GapLength.V.n <- fCalcLengthOfGaps(lTEMP$VAR_orig)
-  kMaxGap.n <- sINFO$DTS * 60 #Halfhours in 60 days
+  kMaxGap.n <- sINFO$DTS * 360 #Halfhours in 360 days
   while (max(GapLength.V.n) > kMaxGap.n) {
     #Flag long gap with -9999.0
     End.i <- which(GapLength.V.n == max(GapLength.V.n))

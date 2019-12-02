@@ -538,14 +538,14 @@ sEddyProc_sMDSGapFill <- function(
   # Step 5: Mean diurnal course (method 3) with window size +-1, +-2 days
   sFillMDC(1, Verbose.b = isVerbose)
   sFillMDC(2, Verbose.b = isVerbose)
-  # Step 6: Look-up table (method 1) with window size +-21, +-28, ..., +-70
-  if (Met.n == 3) for (WinDays.i in seq(21, 70, 7) ) sFillLUT(
+  # Step 6: Look-up table (method 1) with window size +-21, +-28, ..., +-350
+  if (Met.n == 3) for (WinDays.i in seq(21, 350, 7) ) sFillLUT(
     WinDays.i, V1, T1, V2, T2, V3, T3, Verbose.b = isVerbose)
-  # Step 7: Look-up table (method 2) with window size +-14, +-21, ..., +-70
-  if (Met.n == 3 || Met.n == 1) for (WinDays.i in seq(14, 70, 7) ) sFillLUT(
+  # Step 7: Look-up table (method 2) with window size +-14, +-21, ..., +-350
+  if (Met.n == 3 || Met.n == 1) for (WinDays.i in seq(14, 350, 7) ) sFillLUT(
     WinDays.i, V1, T1, Verbose.b = isVerbose)
-  # Step 8: Mean diurnal course (method 3) with window size +-7, +-14, ..., +-350 days
-  for (WinDays.i in seq(7, 350, 7) ) sFillMDC(WinDays.i, Verbose.b = isVerbose)
+  # Step 8: Mean diurnal course (method 3) with window size +-7, +-14, ..., +-420 days
+  for (WinDays.i in seq(7, 420, 7) ) sFillMDC(WinDays.i, Verbose.b = isVerbose)
 
   # Set long gaps again to NA
   sTEMP$VAR_fall <<- suppressMessages(fConvertGapsToNA(sTEMP$VAR_fall))

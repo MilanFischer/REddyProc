@@ -544,8 +544,8 @@ sEddyProc_sMDSGapFill <- function(
   # Step 7: Look-up table (method 2) with window size +-14, +-21, ..., +-70
   if (Met.n == 3 || Met.n == 1) for (WinDays.i in seq(14, 70, 7) ) sFillLUT(
     WinDays.i, V1, T1, Verbose.b = isVerbose)
-  # Step 8: Mean diurnal course (method 3) with window size +-7, +-14, ..., +-210 days
-  for (WinDays.i in seq(7, 210, 7) ) sFillMDC(WinDays.i, Verbose.b = isVerbose)
+  # Step 8: Mean diurnal course (method 3) with window size +-7, +-14, ..., +-350 days
+  for (WinDays.i in seq(7, 350, 7) ) sFillMDC(WinDays.i, Verbose.b = isVerbose)
 
   # Set long gaps again to NA
   sTEMP$VAR_fall <<- suppressMessages(fConvertGapsToNA(sTEMP$VAR_fall))

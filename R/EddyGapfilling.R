@@ -99,9 +99,11 @@ sEddyProc_sFillInit <- function(
       'Initialized variable \'', Var.s, '\' with ', sum(is.na(lTEMP$VAR_orig))
       , ' real gaps for gap filling of all ', sum(is.na(lTEMP$VAR_fall))
       , ' values (to estimate uncertainties).')
+    flush.console()
   } else {
     message('Initialized variable \'', Var.s, '\' with ', sum(is.na(lTEMP$VAR_orig)),
             ' real gaps for gap filling.')
+    flush.console()
   }
 
   # twutz: error prone if sTEMP already contains columns of lTEMP
@@ -151,6 +153,7 @@ sEddyProc_sFillLUT <- function(
       if (Verbose.b && Pos.i == 1)  message(
         'Look up table with window size of ', WinDays.i, ' days with '
         , paste(c(V1.s, V2.s, V3.s, V4.s, V5.s)[!NoneCols.b], collapse = ' '))
+      flush.console()
       # Set window size
       Gap.i   <- ToBeFilled.V.i[Pos.i]
       if (T == T) {
@@ -240,9 +243,12 @@ sEddyProc_sFillLUT <- function(
           , lVAR_fmeth.n, lVAR_fwin.n, lVAR_fqc.n))
       }
       if (Verbose.b && Pos.i %% 100 == 0)  message('.', appendLF = FALSE)
+      flush.console()
       if (Verbose.b && Pos.i %% 6000 == 0) message('\n.', appendLF = FALSE)
+      flush.console()
     }
     if (Verbose.b) message('', nrow(lGF.M))
+    flush.console()
   }
   # Copy gap filled values and properties to sTEMP
   if (nrow(lGF.M) > 0) {
@@ -288,6 +294,7 @@ sEddyProc_sFillMDC <- function(
       # Message on progress if wanted
       if (Verbose.b && Pos.i == 1) message(
         'Mean diurnal course with window size of ', WinDays.i, ' days: .', sep = '')
+      flush.console()
 
       # Set index within window size
       Gap.i   <- ToBeFilled.V.i[Pos.i]
@@ -347,9 +354,12 @@ sEddyProc_sFillMDC <- function(
           , lVAR_fmeth.n, lVAR_fwin.n, lVAR_fqc.n))
       }
       if (Verbose.b && Pos.i %% 100 == 0)  message('.', appendLF = FALSE)
+      flush.console()
       if (Verbose.b && Pos.i %% 6000 == 0) message('\n.', appendLF = FALSE)
+      flush.console()
     }
     if (Verbose.b) message('', nrow(lGF.M))
+    flush.console()
   }
   # Copy gap filled values and properties to sTEMP
   if (nrow(lGF.M) > 0) {
@@ -509,12 +519,14 @@ sEddyProc_sMDSGapFill <- function(
         'Full MDS algorithm for gap filling of \''
         , attr(sTEMP$VAR_f, 'varnames'), '\' with LUT('
         , V1, ', ', V2, ', ', V3, ') and MDC.')
+      flush.console()
       3
     } else if (V1 != 'none' && sum(!is.na(sDATA[, V1])) != 0) {
       #Only one meteo condition available for LUT
       message(
         'Limited MDS algorithm for gap filling of \''
         , attr(sTEMP$VAR_f, 'varnames'), '\' with LUT(', V1, ' only) and MDC.')
+      flush.console()
       1
     } else {
       #No meteo condition available (use MDC only)
@@ -522,6 +534,7 @@ sEddyProc_sMDSGapFill <- function(
         'Restriced MDS algorithm for gap filling of \''
         , attr(sTEMP$VAR_f, 'varnames')
         , '\' with no meteo conditions and hence only MDC.')
+      flush.console()
       if (Var != 'Rg') warning(
         'sMDSGapFill::: No meteo available for MDS gap filling!')
       0
@@ -558,6 +571,7 @@ sEddyProc_sMDSGapFill <- function(
     , length(sTEMP$VAR_fall) - sum(is.na(sTEMP$VAR_fall))
     , ', real gaps filled: ', sum(is.na(sTEMP$VAR_orig))
     , ', unfilled (long) gaps: ', sum(is.na(sTEMP$VAR_fall)), '.')
+  flush.console()
 
   ##details<< \describe{\item{Different processing setups on the same dataset}{
   ## Attention: When processing the same site data set with different setups for

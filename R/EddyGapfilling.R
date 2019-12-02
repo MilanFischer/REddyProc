@@ -240,8 +240,10 @@ sEddyProc_sFillLUT <- function(
           , lVAR_fmeth.n, lVAR_fwin.n, lVAR_fqc.n))
       }
       if (Verbose.b && Pos.i %% 100 == 0)  message('.', appendLF = FALSE)
-      if (Verbose.b && Pos.i %% 6000 == 0) message('\n.', appendLF = FALSE)
-      flush.console()
+      if (Verbose.b && Pos.i %% 6000 == 0){
+        message('\n.', appendLF = FALSE)
+        flush.console()
+      }
     }
     if (Verbose.b) message('', nrow(lGF.M))
   }
@@ -348,8 +350,10 @@ sEddyProc_sFillMDC <- function(
           , lVAR_fmeth.n, lVAR_fwin.n, lVAR_fqc.n))
       }
       if (Verbose.b && Pos.i %% 100 == 0)  message('.', appendLF = FALSE)
-      if (Verbose.b && Pos.i %% 6000 == 0) message('\n.', appendLF = FALSE)
-      flush.console()
+      if (Verbose.b && Pos.i %% 6000 == 0){
+        message('\n.', appendLF = FALSE)
+        flush.console()
+      }
     }
     if (Verbose.b) message('', nrow(lGF.M))
   }
